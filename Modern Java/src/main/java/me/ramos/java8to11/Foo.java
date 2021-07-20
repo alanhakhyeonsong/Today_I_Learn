@@ -47,7 +47,7 @@ public class Foo {
 
         Predicate<String> startsWithRamos = (s) -> s.startsWith("Ramos");
         Predicate<Integer> isEven = (i) -> i%2 == 0;
-        
+
 
     }
 }
