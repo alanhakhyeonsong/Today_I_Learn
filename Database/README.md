@@ -8,6 +8,7 @@
 > [✅ Chapter 6: 관계 데이터 연산](./chapter06.md)   
 > [✅ Chapter 7: 데이터베이스 언어 SQL](./chapter07.md)   
 > [✅ Chapter 8: 데이터베이스 설계](./chapter08.md)   
+> [✅ Chapter 9: 정규화](./chapter09.md)   
 
 ## Reference
 > 데이터베이스 개론 2판 (한빛아카데미)
