@@ -10,6 +10,7 @@
 > [✅ Chapter 8: 데이터베이스 설계](./chapter08.md)   
 > [✅ Chapter 9: 정규화](./chapter09.md)   
 > [✅ Chapter 10: 회복과 병행 제어](./chapter10.md)   
+> [✅ Chapter 11: 보안과 권한 관리](./chapter11.md)
 
 ## Reference
 > 데이터베이스 개론 2판 (한빛아카데미)
