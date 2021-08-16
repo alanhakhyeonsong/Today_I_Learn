@@ -5,6 +5,7 @@
 > [✅ Docker 명령어(run)](./20210627.md)   
 > [✅ Docker 명령어(exec, ps, stop, rm, logs, images, pull, rmi, network create/connect, volume)](./20210703.md)   
 > [✅ docker-compose와 문법](./20210814.md)   
+> [✅ Docker Image](./20210816.md)    
 
 ## Reference
 - [subicura님 blog](https://subicura.com/)
