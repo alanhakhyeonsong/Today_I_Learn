@@ -12,10 +12,10 @@
 
 ## 3. 트랜잭션의 연산
 - commit 연산: 작업 완료
-<img src="./images/commit.jpg">
+<img src="https://user-images.githubusercontent.com/60968342/130901447-34eb0561-42e5-4c1f-b58e-fce99e6e6a8a.jpg">
 
 - rollback 연산: 작업 취소
-<img src="./images/rollback.jpg">
+<img src="https://user-images.githubusercontent.com/60968342/130901449-08686a8d-2818-423f-a66a-c107f1fcd037.jpg">
 
 ## 4. 트랜잭션의 상태
 - 활동 상태: 트랜잭션이 수행을 시작하여 현재 수행 중인 상태다.
@@ -45,7 +45,7 @@
 | 로그(log) | 데이터베이스에서 변경 연산이 실행될 때마다 데이터를 변경하기 이전 값과 변경한 이후의 값을 별도의 파일에 기록하는 방법 |
 
 📌 로그 레코드의 종류
-<img src="./images/logrecode.jpg">
+<img src="https://user-images.githubusercontent.com/60968342/130901456-bb02baac-9167-40fe-9596-ac70125d067a.jpg">
 
 ## 7. 회복 기법의 유형
 - 로그 회복 기법: 로그를 이용한 회복이다.
@@ -85,8 +85,8 @@
 ## 12. 로킹 기법
 병행 수행되는 트랜잭션들이 동일한 데이터에 동시에 접근하지 못하도록 lock과 unlock 연산으로 제어한다. 기본 원리는 한 트랜잭션이 먼저 접근한 데이터에 대한 연산을 모두 마칠 때까지, 해당 데이터에 다른 트랜잭션이 접근하지 못하도록 상호 배재(mutual exclusion)하여 직렬 가능성을 보장하는 것이다(멀티스레딩 프로그래밍 기법과 동일한 원리라고 이해하면 쉽다). 로킹 단위가 커질수록 병행성이 낮아지지만 제어가 쉽고, 로킹 단위가 작아질수록 제어가 어렵지만 병행성이 높아진다.
 - lock 연산: 트랜잭션이 데이터에 대한 독점권을 요청하는 연산. 데이터를 단순히 읽어오기만 하는 read 연산의 경우, 다른 트랜잭션이 같은 데이터에 동시에 read 연산을 실행해도 문제가 생기지는 않는다. 따라서 하나의 데이터에 read 연산을 동시에 실행할 수 있도록 하여 처리 효율성을 높일 필요가 있다.    
-<img src="./images/lock연산.jpg">
-<img src="./images/lock연산2.jpg">
+<img src="https://user-images.githubusercontent.com/60968342/130901471-d766eeb4-adb7-4655-87e1-23c299b6b640.jpg">
+<img src="https://user-images.githubusercontent.com/60968342/130901473-06e108df-7d00-4618-9b13-2de765515dab.jpg">
 - unlock 연산: 트랜잭션이 데이터에 대한 독점권을 반환하는 연산
 
 ## 13. 2단계 로킹 규약

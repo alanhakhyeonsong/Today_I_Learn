@@ -3,7 +3,7 @@
 사용자의 다양한 요구 사항을 고려하여 데이터베이스를 생성하는 과정이다. E-R 모델과 변환 규칙을 이용한 설계와 정규화를 이용한 설계가 있다.
 
 1. E-R 모델과 릴레이션 변환 규칙을 이용한 설계
-<img src="./images/DB_design.jpg">
+<img src="https://user-images.githubusercontent.com/60968342/130900715-7b83c07b-919d-4d1f-9791-b1e42e75f17c.jpg">
 
 2. 정규화를 이용한 설계: 이상 현상을 제거하면서 올바르게 설계해나가는 방법이다. (다음 chapter에서 정리할 예정)
 
@@ -28,16 +28,16 @@
 
 개념적 설계의 최종 결과물은 E-R 다이어그램으로 작성해야 한다. 개체는 사각형으로, 속성은 타원형으로 표현한다. 키 속성은 이름에 밑줄을 그어 표시한다.
 - 회원 E-R 다이어그램
-<img src="./images/member_erd.jpg">
+<img src="https://user-images.githubusercontent.com/60968342/130900721-844c590a-fecd-4e9d-a667-8092b2793872.jpg">
 
 - 상품 E-R 다이어그램
-<img src="./images/product_erd.jpg">
+<img src="https://user-images.githubusercontent.com/60968342/130900728-ecb4fac5-3fd6-4aff-8d2b-48de7ed66aab.jpg">
 
 - 제조업체 E-R 다이어그램
-<img src="./images/manufacturer_erd.jpg">
+<img src="https://user-images.githubusercontent.com/60968342/130900731-5b765592-7e83-4938-8a07-841f940870cc.jpg">
 
 - 게시글 E-R 다이어그램
-<img src="./images/article_erd.jpg">
+<img src="https://user-images.githubusercontent.com/60968342/130900736-89b670ac-7241-4fe5-8666-7454be9097b9.jpg">
 
 ### 2. 관계 추출
 관계는 개체 간의 의미 있는 연관성이다. 일반적으로 요구 사항을 표현한 문장에서 동사로 표현된다. 관계를 추출한 후에는 추출한 관계에 대한 매핑 카디널리티와 참여 특성을 결정한다.   
@@ -54,7 +54,7 @@
 
 ### 3. E-R 다이어그램 작성
 이를 통해 최종적인 E-R 다이어그램을 작성해보자. 관계는 마름모로 표현하고, 사각형으로 표현된 개체와 선으로 연결한다. 필수적으로 참여하는 개체는 개체와 관계를 이중선으로 연결한다.
-<img src="./images/final_erd.jpg">
+<img src="https://user-images.githubusercontent.com/60968342/130900886-545d663b-22cb-4c21-bd1d-171b18cfb001.jpg">
 
 ## 4. 논리적 설계와 릴레이션 스키마 변환 규칙
 E-R 모델은 개체와 관계를 구분하지만, 관계 데이터 모델에서는 개체와 관계를 구분하지 않고 모두 릴레이션으로 표현한다. 그리고 E-R 모델에서는 다중 값 속성이나 복합 속성을 허용하지만, 관계 데이터 모델에서는 다중 값 속성과 복합 속성을 허용하지 않는다.   
@@ -65,44 +65,44 @@ E-R 모델은 개체와 관계를 구분하지만, 관계 데이터 모델에서
 단, 개체가 가지고 있는 속성이 복합 속성인 경우에는 복합 속성을 구성하고 있는 단순 속성만 릴레이션의 속성으로 변환한다.    
 개체가 가지고 있는 키 속성은 릴레이션의 기본키로 변환한다.
 
-<img src="./images/규칙1.jpg">
+<img src="https://user-images.githubusercontent.com/60968342/130900891-35f83b2e-62ff-41e8-a57d-3ff21fb6bac5.jpg">
 
 ### 규칙 2: 다대다(n:m) 관계는 릴레이션으로 변환한다.
 다대다 관계를 하나의 릴레이션으로 변환한다. 관계의 이름을 릴레이션의 이름으로 하고, 관계의 속성도 릴레이션의 속성으로 그대로 변환한다. 단, 관계를 맺고 있는 개체가 무엇인지 중요하므로, 관계를 맺고 있는 개체들을 규칙 1에 따라 변환 후 이 릴레이션들의 기본키를 관계 릴레이션에 포함시키고 _외래키_ 로 지정한다.    
 이 외래키들을 조합하여 관계 릴레이션의 기본키로 지정한다.
 
-<img src="./images/규칙2.jpg">
+<img src="https://user-images.githubusercontent.com/60968342/130900898-7013aebc-100a-4091-8156-938e24fc681c.jpg">
 
 ### 규칙 3: 일대다(1:n) 관계는 외래키로 표현한다.
 - 규칙 3-1: 일반적인 일대다 관계는 외래키로 표현한다.  
 일대다 관계에서 1측 개체 릴레이션의 기본키를 가져와 n측 개체 릴레이션에 포함시키고 외래키로 지정한다.
 
-<img src="./images/규칙3-1.jpg">
+<img src="https://user-images.githubusercontent.com/60968342/130900910-b3f68db6-e501-4bc0-8540-600941851869.jpg">
 
 - 규칙 3-2: 약한 개체가 참여하는 일대다 관계는 외래키를 포함해서 기본키로 지정한다.    
 외래키가 포함된 릴레이션에서 이 외래키를 포함하여 기본키를 지정해야 한다.
 
-<img src="./images/규칙3-2.jpg">
+<img src="https://user-images.githubusercontent.com/60968342/130900913-cd07f6a8-04eb-4fb3-bc8f-52027041ec3c.jpg">
 
 ### 규칙 4: 일대일(1:1) 관계는 외래키로 표현한다.
 - 규칙 4-1: 일반적인 일대일 관계는 외래키를 서로 주고받는다.
 
-<img src="./images/규칙4-1.jpg">
+<img src="https://user-images.githubusercontent.com/60968342/130900919-ba32d7da-e6bb-4752-a142-ed024ccf8e2d.jpg">
 
 - 규칙 4-2: 일대일 관계에 필수적으로 참여하는 개체의 릴레이션만 외래키를 받는다.    
 다음은 남자 개체는 혼인에 필수적으로 참여하지만, 여자 개체는 선택적으로 참여하고 있는 예시이다.
 
-<img src="./images/규칙4-2.jpg">
+<img src="https://user-images.githubusercontent.com/60968342/130900928-aa5df41e-2a50-498a-aef3-8b2602bd496e.jpg">
 
 - 규칙 4-3: 모든 개체가 일대일 관계에 필수적으로 참여하면 릴레이션 하나로 합친다.    
 두 개체가 그만큼 관련성이 있는 개체라는 의미이다. 따라서 두 개체에 해당하는 두 릴레이션을 하나로 합쳐 표현한다.
 
-<img src="./images/규칙4-3.jpg">
+<img src="https://user-images.githubusercontent.com/60968342/130900938-01a2aede-d139-494c-90c1-8a321d8c8b16.jpg">
 
 ### 규칙 5: 다중 값 속성은 릴레이션으로 변환한다.
 관계 데이터 모델의 릴레이션에서는 다중 값을 가지는 속성을 허용하지 않는다. 따라서 E-R 다이어그램에 있는 다중 값 속성은 그 속성을 가지고 있는 개체에 해당하는 릴레이션이 아닌 별도의 릴레이션을 만들어 포함시킨다.
 
-<img src="./images/규칙5.jpg">
+<img src="https://user-images.githubusercontent.com/60968342/130900945-00140ba8-d5f8-4c32-a667-3367f55fb581.jpg">
 
 ## 5. 물리적 설계와 구현
 - 물리적 설계: 필요한 인덱스 구조나 내부 저장 구조 등 물리적 구조를 설계한다.
