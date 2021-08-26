@@ -28,14 +28,14 @@
 > - 대중적인 언어에서는 대부분 ORM 기술이 존재
 
 ### 기존의 JDBC API와 SQL 중심 동작
-<img src="../images/sql중심.jpg">
+<img src="https://user-images.githubusercontent.com/60968342/130898860-2b617535-29d1-492b-8a1d-fd90d7bb0089.jpg">
 
 ### **JPA는 애플리케이션과 JDBC 사이에서 동작**
-<img src="../images/jpa.png">
+<img src="https://user-images.githubusercontent.com/60968342/130898874-e3c446fd-bc46-4738-ad93-51c02fdb457d.png">
 Java 애플리케이션에서 JPA에 명령하면, JPA는 JDBC API를 사용해서 SQL을 만들어 DB에 보낸다.
 
 ### JPA 동작 - 저장
-<img src="../images/jpainsert.png">
+<img src="https://user-images.githubusercontent.com/60968342/130898881-a200f691-5fea-4339-9708-a6c38bba295a.png">
 
 ```java
 jpa.persist(member); // 저장
@@ -46,7 +46,7 @@ jpa.persist(member); // 저장
 - 패러다임의 불일치 해결
 
 ### JPA 동작 - 조회
-<img src="../images/jpafind.png">
+<img src="https://user-images.githubusercontent.com/60968342/130898885-1911a749-6692-4935-9b7f-9af3b846453d.png">
 
 ```java
 Member member = jpa.find(memberId); // 조회
@@ -81,7 +81,7 @@ JPA를 사용하면 필드만 추가하면 된다. SQL은 JPA가 처리함.
 4. JPA와 비교하기
 
 #### JPA와 상속
-<img src="../images/jpa와 상속.png">
+<img src="https://user-images.githubusercontent.com/60968342/130898895-ab3f366a-4a6f-486d-8d5d-79afada4e73e.png">
 
 - 저장     
 `jpa.persist(album);`을 명령하면 JPA가 알아서 처리해줌. JPA는 persist 명령을 받고, ITEM 테이블, ALBUM 테이블 두 군데 모두 INSERT 쿼리를 날린다.
