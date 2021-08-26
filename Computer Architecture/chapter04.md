@@ -1,6 +1,6 @@
 # 중앙 처리 장치
 ## 프로세서 구성과 동작
-<img src="./images/architecture.jpg">
+<img src="https://user-images.githubusercontent.com/60968342/130899640-7166ced7-c79e-4a8e-9cfe-b370355f8dda.jpg">
 
 프로세서의 필수 요소 세 가지는 **산술 논리 연산 장치(ALU), 제어 장치(CU), 레지스터 세트(Register Set)** 이다.
 - ALU: 산술 및 논리 연산 등 기본 연산을 수행한다.
@@ -9,7 +9,7 @@
 
 ### 프로세서 기본 구조
 ALU를 이용하여 오퍼랜드를 실행하고 결과를 저장하는 부분을 **데이터 경로** 라 하며 CPU의 핵심이다.
-<img src="./images/processor_struc.jpg">
+<img src="https://user-images.githubusercontent.com/60968342/130899655-84c98dcc-9c0c-48ac-bc1e-23ec8561d182.jpg">
 
 ALU는 입력에 대해 덧셈, 뺄셈 등 연산을 수행하고, 그 결과를 누산기(AC)에 저장한다. 대부분의 명령은 다음 두 가지 범주 중 하나로 분류할 수 있다.
 - 레지스터-메모리 명령   
@@ -48,12 +48,12 @@ ALU는 입력에 대해 덧셈, 뺄셈 등 연산을 수행하고, 그 결과를
 
 곱셈의 경우 부스(Booth) 알고리즘을 사용한다.
 
-<img src="./images/BOOT_ALGO.png">
+<img src="https://user-images.githubusercontent.com/60968342/130899669-598da29e-c090-4ed7-9279-de9c01b2d96c.png">
 
 ## 레지스터
 CPU 내부에서 처리할 명령어나 연산의 중간값들을 일시적으로 저장하는 기억장치이다. CPU가 사용하는 데이터와 명령어를 신속하게 읽어 오고 저장하고 전송하는 데 사용된다. 레지스터는 **메모리 계층의 최상위**에 있으며 **시스템에서 가장 빠른 메모리**이다.
 
-<img src="./images/cpu_register.jpg">
+<img src="https://user-images.githubusercontent.com/60968342/130899681-66bef2d9-950a-4b09-a1f8-7a5420459a3d.jpg">
 
 ### 레지스터 종류
 레지스터는 CPU에서 중요한 구성 요소로 특정 기능을 수행한다.
@@ -72,7 +72,7 @@ CPU 내부에서 처리할 명령어나 연산의 중간값들을 일시적으�
 ## 컴퓨터 명령어
 명령어는 **연산 코드(opcode, 행위/동작/지시)**와 **오퍼랜드(operand, 피연산자) 위치**, 연산 결과의 저장 위치 등 여러가지 정보로 구성된다.
 
-<img src="./images/operation.png">
+<img src="https://user-images.githubusercontent.com/60968342/130899700-ab2d8e7d-6447-422b-b6e6-6be565aae5ae.png">
 
 - 0-주소 명령어: 연산에 필요한 오퍼렌드와 결과의 저장 장소가 모두 묵시적으로 지정된 경우로, 스택을 갖는 구조에서 사용된다. 데이터를 기억시킬 때는 PUSH를, 꺼낼 때는 POP을 사용한다.
 - 1-주소 명령어: 연산 대상이 되는 2개 중 하나만 표현하고 나머지 하나는 묵시적으로 지정된 누산기(AC)를 사용한다. 기억 장치 내의 데이터와 AC 내의 데이터로 연산이 이루어지고 연산 결과는 AC에 저장된다.    
@@ -93,22 +93,22 @@ CPU 내부에서 처리할 명령어나 연산의 중간값들을 일시적으�
 ### 즉시 주소 지정
 명령어에 오퍼랜드가 포함되어 명령어가 인출될 때 오퍼랜드도 자동으로 인출되고 이 값도 즉시 사용할 수 있는 주소 지정이다. 메모리 참조 횟수가 0인 장점이 있지만, **상수**만 가능하며 상수 값의 크기가 필드 크기로 제한된다는 단점이 있다.
 
-<img src="./images/addressing.jpg">
+<img src="https://user-images.githubusercontent.com/60968342/130899714-ac06e46f-7626-4a5f-96de-af60ef9b1083.jpg">
 
 ### 직접 주소 지정
 메모리에 위치한 오퍼랜드를 지정하는 방법은 전체 주소를 지정하는 것이며, 이를 직접 주소 지정이라 한다. 명령어는 항상 정확히 동일한 메모리 위치에 액세스 한다. 값이 변할 수는 있으나 위치는 변할 수 없다. 따라서 이 방식은 컴파일할 때 알려진 주소의 전역 변수에 액세스하는 데만 사용할 수 있다.
 
-<img src="./images/direct_addressing.jpg">
+<img src="https://user-images.githubusercontent.com/60968342/130899812-86cb7ab6-661a-4880-90c7-9de01dd5657d.jpg">
 
 ### 레지스터 간접 주소 지정
 지정된 오퍼랜드는 메모리에서 가져오거나 메모리로 이동하는 기능은 같지만 직접 주소를 명령어에는 포함하지는 않는다. 그 대신 메모리의 주소는 레지스터에 저장되어 있고, 이 주소를 **포인터(pointer)**라고 한다. 이 방식의 가장 큰 **장점은 명령어에 전체 메모리 주소가 없어도 메모리를 참조할 수 있다는 것이다.**
 
-<img src="./images/register_indirect_addressing.jpg">
+<img src="https://user-images.githubusercontent.com/60968342/130899815-2751f031-c839-4468-9737-b7b0f48bb3c4.jpg">
 
 ### 변위 주소 지정
 특정 레지스터에 저장된 주소에 변위(offset)을 더해 실제 오퍼랜드가 저장된 메모리 위치를 지정하는 방식이다. 인덱스 주소 지정 방식은 인덱스 레지스터가 되고, 상대 주소 지정 방식에서는 PC가 특정 레지스터가 된다.
 
-<img src="./images/displacement_addressing.jpg">
+<img src="https://user-images.githubusercontent.com/60968342/130899825-5eb17a1d-31fe-490e-9390-9e0e471b716e.jpg">
 
 ### 간접 주소 지정
 메모리 참조가 두 번 이상 일어나는 경우이다. 데이터를 가져오는 데 많은 시간이 걸린다. 현재는 이와 같은 방식을 지원하는 프로세서가 없다고 보면 된다.

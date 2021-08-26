@@ -5,7 +5,7 @@
 
 ## 하드웨어
 다음과 같이 구성되며 컴퓨터는 사용자가 작성한 프로그램들을 정해진 순서대로 실행하는데, 이러한 기능을 수행하기 위해 각 구성 요소들은 **시스템 버스** 를 통해 상호 연결되어 있다.
-<img src="./images/hardware.jpg">
+<img src="https://user-images.githubusercontent.com/60968342/130899177-fe19b60d-540c-4ee5-b626-a747ad3c21b1.jpg">
 
 ### 중앙 처리 장치(Central Processing Unit, CPU)
 컴퓨터의 핵심 기능인 프로그램 실행과 데이터 처리를 담당한다. 프로세서(processor) 또는 마이크로프로세서(microprocessor)라고도 한다. 일반적으로 마이크로프로세서는 CPU를 IC 칩 1개에 집적한 반도체 소자를 의미한다.
@@ -29,14 +29,14 @@ CPU와 기억 장치 및 입출력 장치 사이에 정보를 교환하는 통�
 - 데이터 버스(data bus): 기억 장치나 입출력 장치 사이에 데이터를 전송하기 위한 신호선들의 집합. 데이터선의 수는 CPU가 한 번에 전송할 수 있는 데이터 비트의 수를 결정함. 읽기와 쓰기 동작을 모두 지원해야 하므로 **양방향 전송** 이 가능해야 함.
 - 제어 버스(control bus): CPU가 시스템 내의 각종 요소의 동작을 제어하는 데 필요한 신호선들의 집합. **단방향성** 이다.
 
-<img src="./images/computersystem.jpg">
+<img src="https://user-images.githubusercontent.com/60968342/130899195-13f328ef-012c-4ae9-a942-105b31a23200.jpg">
 
 ## 소프트웨어
 컴퓨터를 구성하고 있는 하드웨어를 잘 동작시킬 수 있도록 제어하고, 지시하는 모든 종류의 프로그램을 의미.
-<img src="./images/software.jpg">
+<img src="https://user-images.githubusercontent.com/60968342/130899211-730932af-cd67-45b1-9ca7-6dc6f2364488.jpg">
 
 ## 프로그램 처리 과정
-<img src="./images/KakaoTalk_20210823_235527799.jpg">
+<img src="https://user-images.githubusercontent.com/60968342/130899232-cbe5ea8d-e784-425c-afde-d54b0d6ca195.jpg">
 
 어셈블리 명령어의 동작을 개략적으로 이해할 수 있도록 사용된 기호인 LOAD, ADD, STOR를 니모닉이라 한다. 위 그림에선 번역된 기계어는 3bit 연산 코드(opcode)와 5bit 오퍼랜드(operand)로 구성되어 있다. 연산코드는 수행할 연산을 지정하고, 오퍼랜드는 명령어가 사용할 데이터가 저장되어 있는 기억 장소의 주소를 가리킨다.
 
@@ -49,7 +49,7 @@ CPU와 기억 장치 및 입출력 장치 사이에 정보를 교환하는 통�
 3. 명령을 실행하는 데 필요한 데이터를 메모리에서 인출하여 레지스터에 저장
 4. ALU는 명령을 실행하고, 레지스터나 메모리에 결과를 저장
 
-<img src="./images/vonneumann.jpg">
+<img src="https://user-images.githubusercontent.com/60968342/130899341-0a935da8-414d-4e7d-ab68-d1f303b50b38.jpg">
 
 하지만 **폰 노이만 병목 현상** 이라는 단점이 있다.
 
@@ -60,6 +60,6 @@ CPU와 기억 장치 및 입출력 장치 사이에 정보를 교환하는 통�
 ## 하버드 구조
 폰 노이만 구조의 단점을 보완하여 **명령어 메모리 영역과 데이터 메모리 영역을 물리적으로 분리** 시키고, 각각을 다른 시스템 버스로 CPU에 연결함으로써 명령과 데이터를 메모리로부터 읽는 것을 **동시에 처리** 할 수 있다.
 
-<img src="./images/harvard.jpg">
+<img src="https://user-images.githubusercontent.com/60968342/130899344-3bf0ffe7-19ca-4e92-8a27-958a3ed89fd7.jpg">
 
 하버드 구조는 CPU와 캐시의 관계에 활용되고 있다. 캐시에 오류가 일어나면 주기억 장치로부터 데이터를 가져 오고, 명령 캐시나 데이터 캐시에 저장한다.

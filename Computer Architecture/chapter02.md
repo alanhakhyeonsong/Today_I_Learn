@@ -4,7 +4,7 @@
 
 ### 고정 소수점(Fixed Point)
 소수점이 찍힐 위치를 미리 정해놓고 소수를 표현하는 방식(정수 + 소수)
-<img src="./images/fixed_point.png">
+<img src="https://user-images.githubusercontent.com/60968342/130899443-4059e9bd-f14d-479a-ac9a-747b19440cc6.png">
 
 - 장점: 실수를 정수부와 소수부로 표현하여 단순함.
 - 단점: 표현의 범위가 너무 적어서 활용하기 힘들다. (정수부: 15bit, 소수부: 16bit)
@@ -14,12 +14,12 @@
 > - 가수: 실수의 실제값 표현  
 > - 지수: 크기를 표현함. 가수의 어디쯤에 소수점이 있는지 나타냄
 
-<img src="./images/floating_point.png">
+<img src="https://user-images.githubusercontent.com/60968342/130899449-12134b17-e75c-412e-9c0b-5013f4daa788.png">
 
 - 장점: 표현할 수 있는 수의 범위가 넓어짐(현재 대부분의 시스템에서 활용 중)
 - 단점: 오차가 발생할 수 있음(부동소수점으로 표현할 수 있는 방법이 매우 다양함)
 
-<img src="./images/KakaoTalk_20210824_153233112.jpg">
+<img src="https://user-images.githubusercontent.com/60968342/130899458-1a6b8d69-de67-417b-af07-7b727b682aad.jpg">
 
 양의 지수와 음의 지수를 표현하기 위해 **바이어스(bias)** 를 사용한다. IEEE 표준에서는 바이어스 127과 1023을 사용한다. 가수 부분은 단정도일 경우 23bit로 나타내고, 배정도일 경우 52bit로 나타낸다. 가수에 저장될 데이터는 2진수를 정규화 하여 나타낸다.
 
@@ -36,7 +36,7 @@
 
 ### 그레이 코드(gray code)
 연산에는 부적합하고 주로 아날로그-디지털 변환기나 입출력 장치 코드로 사용됨. 연속 코드 간에 한 비트만 변하며, 입력 코드로 사용하면 오차가 줄어든다는 특징이 있다.
-<img src="./images/graycode.jpg">
+<img src="https://user-images.githubusercontent.com/60968342/130899535-2a5f96e8-ca2a-414a-a942-f6a7922df478.jpg">
 
 ## 에러 검출 코드
 ### 패리티 비트
@@ -62,5 +62,5 @@
 
 해밍 코드에서는 **짝수 패리티를 사용한다.**
 
-<img src="./images/parity.jpg">
-<img src="./images/hamming.jpg">
+<img src="https://user-images.githubusercontent.com/60968342/130899543-2f560a06-fdc3-4e7b-a441-0d3929936130.jpg">
+<img src="https://user-images.githubusercontent.com/60968342/130899548-3a1f3e9f-ef79-4a3e-b53f-f74f63fddaf9.jpg">
