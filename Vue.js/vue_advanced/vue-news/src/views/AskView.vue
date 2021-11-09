@@ -1,6 +1,14 @@
 <template>
   <div>
-      <div v-for="item in fetchedAsk">{{ item.title }}</div>
+      <!--<div v-for="item in fetchedAsk">{{ item.title }}</div>-->
+      <p v-for="item in fetchedAsk">
+        <router-link v-bind:to="`item/${item.id}`">
+          {{ item.title }}
+        </router-link>
+        <small>
+          {{ item.time_ago }} by {{ item.user }}
+        </small>
+      </p>
   </div>
 </template>
 
@@ -10,23 +18,23 @@ import { mapState, mapGetters } from "vuex";
 
 export default {
   computed: {
-    // #3
-    ...mapGetters({
-      fetchedAsk: 'fetchedAsk'
-    })
+  //   // #3
+  //   ...mapGetters({
+  //     fetchedAsk: 'fetchedAsk'
+  //   })
 
-    // #4
-    // ...mapGetters([
-    //   'fetchedAsk'
-    // ]),
-    // #2
-    // ...mapState({
-    //   ask: state => state.ask
-    // })
-    // #1
-    // ask() {
-    //   return this.$store.state.ask;
-    // }
+  //  #4
+    ...mapGetters([
+      'fetchedAsk'
+    ]),
+  //   // #2
+  //   // ...mapState({
+  //   //   ask: state => state.ask
+  //   // })
+  //   // #1
+  //   // ask() {
+  //   //   return this.$store.state.ask;
+  //   // }
   },
   created() {
     this.$store.dispatch('FETCH_ASK');
