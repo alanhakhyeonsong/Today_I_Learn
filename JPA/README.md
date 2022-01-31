@@ -8,7 +8,8 @@
 > [✅ Chapter 4: 엔티티 매핑](./chapter04.md)  
 > [✅ Chapter 5: 연관관계 매핑 기초](./chapter05.md)  
 > [✅ Chapter 6: 다양한 연관관계 매핑](./chapter06.md)  
-> [✅ Chapter 7: 고급 매핑](./chapter07.md)
+> [✅ Chapter 7: 고급 매핑](./chapter07.md)  
+> [✅ Chapter 8: 프록시와 연관관계 관리](./chapter08.md)
 
 ## Reference
 
