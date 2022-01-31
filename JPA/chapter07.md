@@ -109,6 +109,7 @@ public class Book extends Item {
 ```
 
 ![](https://images.velog.io/images/songs4805/post/b53e7a64-1d89-4b3a-b4d6-ab92a0a97908/InheritanceType.JOINED.png)
+
 ![](https://images.velog.io/images/songs4805/post/5223a3be-18e4-4329-bcc5-cb724e6968e2/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202022-01-31%20%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB%2010.25.28.png)
 
 ### insert 실행
@@ -153,7 +154,9 @@ public class JpaMain {
 ```
 
 위와 같이 값을 넣어보면 Item과 Movie에 각각 한 번씩 insert query가 실행된다.
+
 ![](https://images.velog.io/images/songs4805/post/5fdf871d-1134-4506-84bd-8ee7a57d9687/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202022-01-31%20%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB%2010.32.01.png)
+
 ![](https://images.velog.io/images/songs4805/post/fefcc7c6-98c8-4b3b-9471-47887a5865f1/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202022-01-31%20%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB%2010.41.25.png)
 
 ### 주요 어노테이션
@@ -185,8 +188,11 @@ public class JpaMain {
 `@Inheritance(strategy = InheritanceType.SINGLE_TABLE)`로 지정하면 된다.
 
 실행 결과는 다음과 같다.
+
 ![](https://images.velog.io/images/songs4805/post/61281c89-e578-4d83-89e5-7f9a6df69c43/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202022-01-31%20%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB%2011.23.15.png)
+
 ![](https://images.velog.io/images/songs4805/post/6650d44a-b736-4190-9e27-cd5cad4a9e6d/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202022-01-31%20%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB%2011.25.14.png)
+
 테이블은 Item 테이블 하나로(단일 테이블)로 매핑되고, insert query가 1번 만 실행된다. 또한 `@DiscriminatorColumn`을 기입하지 않아도 자동으로 들어간다.
 
 정리하자면,
@@ -229,6 +235,7 @@ public class Book extends Item { ... }
 ```
 
 ![](https://images.velog.io/images/songs4805/post/b66d8d12-d527-4a8e-b6cd-077b98fbdb50/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202022-01-31%20%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB%2011.33.35.png)
+
 ![](https://images.velog.io/images/songs4805/post/83af42bb-26bf-4154-bb4a-bf916ff4a449/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202022-01-31%20%E1%84%8B%E1%85%A9%E1%84%8C%E1%85%A5%E1%86%AB%2011.33.50.png)
 
 Item 테이블을 생성하지 않고, Album, Book, Movie 테이블에서 각각 id, name, price 필드를 가지고 있다. Item을 조회하면 Album, Book, Movie 세 개의 테이블을 `UNION ALL`로 전부 조회해서 가져온다.
