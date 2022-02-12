@@ -3,6 +3,7 @@
 ## JVM 이해하기
 
 - [자바, JVM, JDK, JRE](./contents/자바,JVM,JDK,JRE.md)
+- [JVM 구조](./contents/JVM구조.md)
 
 # Reference
 
