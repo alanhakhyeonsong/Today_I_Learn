@@ -4,6 +4,10 @@
 - [JUnit 5 시작하기](#JUnit-5-시작하기)
 - [테스트 이름 표시하기](#테스트-이름-표시하기)
 - [Assertion](#Assertion)
+- [조건에 따라 테스트 실행하기](#조건에-따라-테스트-실행하기)
+- [태깅과 필터링](#태깅과-필터링)
+- [커스텀 태그](#커스텀-태그)
+- [테스트 반복하기](#테스트-반복하기)
 
 # JUnit 5 소개
 
@@ -228,3 +232,127 @@ assertTimeout(Duration.ofMillis(100), () -> {
 ```
 
 [**AssertJ**](https://joel-costigliola.github.io/assertj/), [Hemcrest](https://hamcrest.org/JavaHamcrest/), [Truth](https://truth.dev/) 등의 라이브러리를 사용할 수도 있다.
+
+# 조건에 따라 테스트 실행하기
+
+특정한 조건을 만족하는 경우에 테스트를 실행하는 방법이다.
+
+`org.junit.jupiter.api.Assumptions.*`
+
+- assumeTure(조건)
+- assumingThat(조건, 테스트)
+
+`@Enabled_`, `@Disabled_`
+
+- OnOs
+- OnJre
+- IfSystemProperty
+- IfEnvironmentVariable
+- if
+
+```java
+@Test
+@DisplayName("스터디 만들기")
+@EnabledOnOs({OS.MAC, OS.LINUX})
+void create_new_study() {
+    String test_env = System.getenv("TEST_ENV");
+    assumeTrue("LOCAL".equalsIgnoreCase(test_env));
+
+    assumingThat("LOCAL".equalsIgnoreCase(test_env), () -> {
+        System.out.println("ramos");
+        Study actual = new Study(10);
+        Assertions.assertTrue(actual.getLimit() > 0);
+    });
+}
+
+@Test
+@DisplayName("스터디 만들기 \uD83D\uDE31")
+@DisabledOnOs(OS.MAC)
+void create_new_study_again() {
+    System.out.println("create1");
+}
+```
+
+참고로 환경변수 설정 과정은 다음과 같다.
+
+```bash
+vim ~/.zshrc
+```
+
+![](https://images.velog.io/images/songs4805/post/1a700add-a698-4fe0-bacf-3acd17e38de3/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202022-02-21%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%2011.12.42.png)
+
+이 후 IntelliJ를 껐다 다시 킨 뒤 테스트를 실행하면 위 예제 코드의 첫 번째 테스트 함수가 실행된다.
+
+# 태깅과 필터링
+
+테스트 그룹을 만들고 원하는 테스트 그룹만 테스트를 실행할 수 있는 기능
+
+`@Tag`
+
+- 테스트 메소드에 태그를 추가할 수 있다.
+- 하나의 테스트 메소드에 여러 태그를 사용할 수 있다.
+
+자세한 사항은 다음 링크를 참고하자.
+
+- https://maven.apache.org/guides/introduction/introduction-to-profiles.html
+- https://junit.org/junit5/docs/current/user-guide/#running-tests-tag-expressions
+
+# 커스텀 태그
+
+JUnit 5 애노테이션을 조합하여 커스텀 태그를 만들 수 있다.
+
+```java
+@Target(ElementType.METHOD)
+@Retention(RetentionPolicy.RUNTIME)
+@Tag("fast")
+@Test
+public @interface FastTest { }
+```
+
+```java
+@Target(ElementType.METHOD)
+@Retention(RetentionPolicy.RUNTIME)
+@Tag("slow")
+@Test
+public @interface SlowTest { }
+```
+
+```java
+@FastTest
+@DisplayName("스터디 만들기 fast")
+void create_new_study() {}
+
+@SlowTest
+@DisplayName("스터디 만들기 slow")
+void create_new_study_again() {}
+```
+
+# 테스트 반복하기
+
+`@RepeatedTest`
+
+- 반복 횟수와 반복 테스트 이름을 설정할 수 있다.
+  - {displayName}
+  - {currentRepetition}
+  - {totalRepetitions}
+- RefetitionInfo 타입의 인자를 받을 수 있다.
+
+```java
+@RepeatedTest(10)
+void repeatTest(RepetitionInfo repetitionInfo) {
+    System.out.println("repeat" + repetitionInfo.getCurrentRepetition() + "/" +
+            repetitionInfo.getTotalRepetitions());
+}
+```
+
+![](https://images.velog.io/images/songs4805/post/b02244e9-0dd0-493c-8ca0-879f370a049a/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA%202022-02-21%20%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE%2011.28.34.png)
+
+`@ParameterizedTest`
+
+- 테스트에 여러 다른 매개변수를 대입해가며 반복 실행한다.
+  - {displayName}
+  - {index}
+  - {arguments}
+  - {0}, {1}, ...
+
+// [Guide to JUnit 5 Parameterized Tests - baeldung](https://www.baeldung.com/parameterized-tests-junit-5)
