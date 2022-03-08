@@ -10,6 +10,7 @@
 
 - [코드 커버리지는 어떻게 측정할까?](./contents/codecoverage.md)
 - [모자에서 토끼를 꺼내는 마술](./contents/모자에서토끼를꺼내는마술.md)
+- [바이트코드 조작 정리](./contents/bytecode.md)
 
 # Reference
 
