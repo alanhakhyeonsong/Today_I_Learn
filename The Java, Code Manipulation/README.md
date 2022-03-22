@@ -12,6 +12,10 @@
 - [모자에서 토끼를 꺼내는 마술](./contents/모자에서토끼를꺼내는마술.md)
 - [바이트코드 조작 정리](./contents/bytecode.md)
 
+## 리플렉션
+
+- [스프링 Dependency Injection은 어떻게 동작할까?](./contents/리플렉션1.md)
+
 # Reference
 
 - [더 자바, 코드를 조작하는 다양한 방법](https://www.inflearn.com/course/the-java-code-manipulation#)
