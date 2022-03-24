@@ -1,0 +1,57 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/header::userHead"></head>
+<body>
+<div th:replace="layout/top::header"></div>
+<body>
+
+<div className="container d-flex justify-content-center">
+    <div style="width:700px; margin-top: 30px;">
+        <form className="form-horizontal" th:action="@{/users}" method="post">
+            <div className="form-group">
+                <label htmlFor="username" className="col-sm-2 control-label">아이디</label>
+                <div className="col-sm-10">
+                    <input type="text" className="form-control input-large" name="username" id="username"
+                           placeholder="username" required>
+                </div>
+            </div>
+
+            <div className="form-group">
+                <label htmlFor="password" className="col-sm-2 control-label">비밀번호</label>
+                <div className="col-sm-10">
+                    <input type="password" className="form-control input-large" name="password" id="password"
+                           placeholder="Password" data-minlength="6" required>
+                </div>
+            </div>
+            <div className="form-group">
+                <label htmlFor="email" className="col-sm-2 control-label">이메일</label>
+                <div className="col-sm-10">
+                    <input type="email" className="form-control input-large" name="email" id="email" placeholder="이메일"
+                           required>
+                </div>
+            </div>
+            <div className="form-group">
+                <label htmlFor="age" className="col-sm-2 control-label">나이</label>
+                <div className="col-sm-10">
+                    <input type="text" className="form-control input-large" name="age" id="age" placeholder="나이"
+                           required>
+                </div>
+            </div>
+            <div className="form-group">
+                <label htmlFor="role" className="col-sm-2 control-label">권한</label>
+                <div className="col-sm-10">
+                    <input type="text" className="form-control input-large" name="role" id="role" placeholder="권한"
+                           required>
+                </div>
+            </div>
+            <div className="form-group">
+                <div className="col-sm-offset-1 col-sm-10">
+                    <button type="Submit" className="btn btn-dark btn-lg">가입하기</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</body>
+</html>
