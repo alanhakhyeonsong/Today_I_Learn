@@ -25,6 +25,7 @@
 
 - [스프링 데이터 JPA는 어떻게 동작할까?](./contents/다이나믹프록시1.md)
 - [프록시 패턴](./contents/다이나믹프록시2.md)
+- [다이나믹 프록시 실습](./contents/다이나믹프록시3.md)
 
 # Reference
 
