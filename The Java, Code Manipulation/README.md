@@ -21,6 +21,10 @@
 - [나만의 DI 프레임워크 만들기](./contents/리플렉션5.md)
 - [리플렉션 정리](./contents/리플렉션6.md)
 
+## 다이나믹 프록시
+
+- [스프링 데이터 JPA는 어떻게 동작할까?](./contents/다이나믹프록시1.md)
+
 # Reference
 
 - [더 자바, 코드를 조작하는 다양한 방법](https://www.inflearn.com/course/the-java-code-manipulation#)
