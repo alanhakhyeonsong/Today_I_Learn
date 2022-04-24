@@ -14,15 +14,24 @@ Ref: Open Source SW introduction - Spring Semester, 2022
   - [git log](#git-log)
   - [git add, commit](#git-add,-commit)
   - [git diff](#git-diff)
-  - [`git checkout <commit>`](#`git-checkout-<commit>`)
+  - [`git checkout <commit>`](#git-checkout-<commit>)
 - [.gitignore 파일 추가하기](#.gitignore-파일-추가하기)
 - [git branch](#git-branch)
   - [브랜치가 필요한 이유?](#브랜치가-필요한-이유?)
   - [branch의 기능](#branch의-기능)
-  - [HEAD → master의 의미](#HEAD-→-master의-의미)
-  - [branch 병합(merge)하기](<#branch-병합(merge)하기>)
+  - [HEAD → master의 의미](#HEAD--master의-의미)
+  - [branch 병합(merge)하기](#branch-병합하기)
   - [branch 강제 삭제하기](#branch-강제-삭제하기)
   - [branch 그래프](#branch-그래프)
+- [Git Cycle](#Git-Cycle)
+- [git 복귀](#git-복귀)
+  - [checkout](#checkout)
+  - [reset](#reset)
+  - [revert](#revert)
+- [git reset 옵션](#git-reset-옵션)
+- [git revert](#git-revert)
+- [git checkout](#git-checkout)
+- [git reflog](#git-reflog)
 
 ## git 시작하기
 
@@ -169,7 +178,7 @@ $ git checkout <branch name>
 $ git branch
 ```
 
-### branch 병합(merge)하기
+### branch 병합하기
 
 - master 브랜치로 체크아웃
 - `$ git merge <branch name>`
@@ -199,3 +208,130 @@ $ git branch
 ![](https://velog.velcdn.com/images/songs4805/post/320181c0-e8fb-48dd-8fc6-34e700bb0b24/image.png)
 
 - `$ git log <branch#1> .. <branch#2>`: 두 브랜치의 차이를 보여줌
+
+## Git Cycle
+
+![](https://velog.velcdn.com/images/songs4805/post/91fed5fd-86ef-48a6-a337-827146e77289/image.png)
+
+- untracked: git에서 파일을 추적하지 않는 상태
+- unmodified: git에서 파일을 추적중이며, 수정된 내용이 없는 상태
+- modified: git에서 파일을 추적중이며, 수정된 내용이 있는 상태
+- staged: git에서 commit에 적용될 파일의 상태
+
+## git 복귀
+
+- 코드를 예전 버전으로 돌리고 싶을 때
+- 몇 줄 고치지 않았다면, 굳이 버전을 돌릴 필요는 없음
+- 하지만, 굉장히 방대한 양을 코딩했고, 심각한 오류를 발견했을 경우는? → 오류를 고치는 것보다 때론 이전 버전으로 돌리는게 더 좋을 수도 있음
+
+### checkout
+
+- HEAD가 가리키는 commit을 변경함
+- 복귀라고 보기는 어려울 것 같다.
+
+### **reset**
+
+- 기록한 commit을 취소하는 형태
+- soft, mixed, hard 옵션 존재함
+
+### **revert**
+
+- 기록한 commit을 남겨두고 **취소에 대한 새로운 커밋을 생성**
+
+```bash
+$ git checkout
+
+$ git reset
+# git reset --soft
+# git reset --mixed (default)
+# git reset --hard
+
+$ git revert
+```
+
+## git reset 옵션
+
+- `$ git reset --soft`
+
+  - 변경 이력은 모두 삭제하지만 변경 내용은 남아 있음
+  - **staged 상태**
+    > commit 순서에 따른 되돌리기 정도 (3만 되돌리기)
+    >
+    > 1. 파일 수정
+    > 2. 수정된 파일 add
+    > 3. **add된 파일들을 commit**
+
+- `$ git reset --mixed`
+
+  - 변경 이력은 모두 삭제하지만 변경 내용은 남아 있음
+  - **modified 상태**
+    > commit 순서에 따른 되돌리기 정도 (2, 3만 되돌리기)
+    >
+    > 1. 파일 수정
+    > 2. **수정된 파일 add**
+    > 3. **add된 파일들을 commit**
+
+- `$ git reset --hard`
+
+  - 변경 이력은 모두 삭제하고, 변경 내용도 삭제함
+  - **이전 commit의 unmodified 상태**
+    > commit 순서에 따른 되돌리기 정도 (1~3 모두 되돌리기)
+    >
+    > 1. **파일 수정**
+    > 2. **수정된 파일 add**
+    > 3. **add된 파일들을 commit**
+
+- 원격 저장소(github)와 연결되어 있을 경우?
+  - reset → commit → push → 여러 error 발생 가능
+  - `--force` 옵션을 통해 강제로 overwrite 가능
+
+**다른 사람들과 협업하는 공간에선 reset을 할 경우 굉장히 많은 문제들이 발생 가능하다. 원격 저장소를 통한 협업 repo에선 reset을 자제하자!**
+
+| `git reset [옵션] eea5` | working directory      | staging area           | repository                  |
+| ----------------------- | ---------------------- | ---------------------- | --------------------------- |
+| `--soft`                | 안 바뀜                | 안 바뀜                | **HEAD가 eea5 커밋 가리킴** |
+| `--mixed`               | 안 바뀜                | **eea5 커밋처럼 바뀜** | **HEAD가 eea5 커밋 가리킴** |
+| `--hard`                | **eea5 커밋처럼 바뀜** | **eea5 커밋처럼 바뀜** | **HEAD가 eea5 커밋 가리킴** |
+
+## git revert
+
+- **특정 커밋을 취소하는 커밋을 생성함**
+- **원격 저장소(github)를 활용할 경우에는 reset보단 revert를 활용하자**
+
+```bash
+$ git revert HEAD
+```
+
+- `--no-edit`: commit 메시지 작성 X
+- 지금 HEAD의 커밋을 취소하는 커밋을 생성함
+
+```bash
+$ git revert <commit#1>...<commit#2>
+```
+
+- `--no-edit`: commit 메시지 작성 X
+- <commit#1>에서 ...와 <commit#2>까지를 취소하는 커밋을 생성함
+
+## git checkout
+
+수정사항의 되돌리기가 가능함
+
+```bash
+# 특정 <file>의 수정사항을 commit 상태로 되돌리기
+$ git checkout <file>
+
+# 모든 파일의 수정사항을 commit 상태로 되돌리기
+$ git checkout .
+
+# HEAD가 가리키는 <commit>을 변경함
+# 사용자의 시점이 이동한다고 볼 수 있음. 어느 파일도 삭제가 되지 않음
+# git log --all 로 확인 가능함
+$ git checkout <commit ID>
+```
+
+## git reflog
+
+- git의 모든 이력을 다 볼 수 있는 reflog
+- `git reset --hard <commit>`도 복구가 가능함
+- 삭제한 branch 또한 복구가 가능함
+- **거의 모든 상황에서 복구가 가능하지만, 항상 가능한 것은 아니다.**
