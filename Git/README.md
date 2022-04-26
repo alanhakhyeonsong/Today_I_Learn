@@ -481,7 +481,7 @@ $ git log
 - "remote" 디렉토리와 같은 위치에 "remote2" 디렉토리 생성
 
 ```bash
-$ mkdir remote2 | cd remote2
+$ mkdir remote2 ; cd remote2
 
 # 원격 저장소 하나 더 생성
 $ git init --bare
